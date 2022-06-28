@@ -37,11 +37,18 @@ function App() {
   const removeCart = (id) => {
     setCartItem((items)=> items.filter(item => item.id !== id));
   }
+
+  const clearCart = () => {
+    const result = window.confirm("Are you sure to clear the carts?");
+    if(result===true){
+      setCartItem([]);
+    }
+  }
   return (
     <div className="App">
       <Navbar setKeyword={setKeyword}/>
       <ProductList products = {products} keyword = {keyword} addCart={addCart} />
-      <Cart cartItem={cartItem} removeCart={removeCart}/>
+      <Cart cartItem={cartItem} removeCart={removeCart} clearCart={clearCart} />
     </div>
   );
 }
